@@ -1,0 +1,13 @@
+.DS_Store
+.metadata
+bin/
+.classpath
+.project
+.settings/
+.idea
+*.iml
+*.ipr
+*.iws
+target/
+dependencies/
+

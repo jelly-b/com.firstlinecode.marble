@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.firstlinecode.marble</groupId>
+	<artifactId>com.firstlinecode.marble</artifactId>
+	<version>0.1.0.RELEASE</version>
+	
+	<repositories>
+		<repository>
+            <id>central</id>
+            <url>http://repo1.maven.org/maven2</url>
+         </repository>
+		<repository>
+			<id>com.firstlinecode.release</id>
+			<name>FirstLineCode Repository - Releases</name>
+			<url>http://repo.firstlinecode.com/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>com.firstlinecode.snapshot</id>
+			<name>FirstLineCode Repository - Snapshots</name>
+			<url>http://repo.firstlinecode.com/content/repositories/snapshots</url>
+		</repository>
+	</repositories>
+  
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.jmeter</groupId>
+			<artifactId>ApacheJMeter_core</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.firstlinecode.chalk.leps</groupId>
+			<artifactId>com.firstlinecode.chalk.leps.im</artifactId>
+			<version>0.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.firstlinecode.chalk.xeps</groupId>
+			<artifactId>com.firstlinecode.chalk.xeps.ibr</artifactId>
+			<version>0.2.0.RELEASE</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<useProjectReferences>false</useProjectReferences>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
