@@ -68,13 +68,13 @@
 	<distributionManagement>
                 <repository>
                         <id>com.firstlinecode.releases</id>
-                        <name>CloudEggTech Repository - Releases</name>
+                        <name>FirstLineCode Repository - Releases</name>
                         <url>http://47.115.36.99/repository/maven-releases/</url>
                 </repository>
 
                 <snapshotRepository>
                         <id>com.firstlinecode.snapshots</id>
-                        <name>CloudEggTech Repository - Snapshots</name>
+                        <name>FirstLineCode Repository - Snapshots</name>
                         <url>http://47.115.36.99/repository/maven-snapshots/</url>
                 </snapshotRepository>
         </distributionManagement>
