@@ -24,9 +24,9 @@ import com.firstlinecode.chalk.im.subscription.SubscriptionError;
 import com.firstlinecode.marble.AbstractXmppSampler;
 import com.firstlinecode.marble.IPluginContributor;
 import com.firstlinecode.marble.XmppMessage;
+import com.firstlinecode.marble.XmppMessage.Direction;
 import com.firstlinecode.marble.XmppSampleResult;
 import com.firstlinecode.marble.XmppSampleResultWatcher;
-import com.firstlinecode.marble.XmppMessage.Direction;
 
 public class SubscriptionSampler extends AbstractXmppSampler implements IPluginContributor {
 
@@ -209,18 +209,18 @@ public class SubscriptionSampler extends AbstractXmppSampler implements IPluginC
 		if (!isSelectContactRandomly())
 			return contactJid;
 		
-		String name = contactJid.getName();
+		String node = contactJid.getNode();
 		do {
 			int randomNumber = getRandomNumber();
-			int seqPlaceHolderIndex = name.indexOf(STRING_SEQ_PLACE_HOLDER);
+			int seqPlaceHolderIndex = node.indexOf(STRING_SEQ_PLACE_HOLDER);
 			
 			String newName;
 			if (seqPlaceHolderIndex != -1) {
-				newName = name.replaceAll(STRING_SEQ_PLACE_HOLDER, Integer.toString(randomNumber));
+				newName = node.replaceAll(STRING_SEQ_PLACE_HOLDER, Integer.toString(randomNumber));
 			} else {
-				newName = name + Integer.toString(randomNumber);
+				newName = node + Integer.toString(randomNumber);
 			}
-			contactJid.setName(newName);
+			contactJid.setNode(newName);
 		} while (isUserOrSubscribedContact(contactJid, im, userJid));
 		
 		return contactJid;
