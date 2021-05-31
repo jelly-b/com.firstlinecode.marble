@@ -17,8 +17,8 @@ import com.firstlinecode.basalt.protocol.core.stanza.error.UndefinedCondition;
 import com.firstlinecode.basalt.xeps.ibr.IqRegister;
 import com.firstlinecode.basalt.xeps.ibr.RegistrationField;
 import com.firstlinecode.basalt.xeps.ibr.RegistrationForm;
-import com.firstlinecode.chalk.IChatClient;
-import com.firstlinecode.chalk.StandardChatClient;
+import com.firstlinecode.chalk.core.IChatClient;
+import com.firstlinecode.chalk.core.StandardChatClient;
 import com.firstlinecode.chalk.core.stream.INegotiationListener;
 import com.firstlinecode.chalk.core.stream.IStream;
 import com.firstlinecode.chalk.core.stream.IStreamNegotiant;
@@ -157,12 +157,12 @@ public class InBandRegistrationSampler extends AbstractXmppSampler {
 		}
 		
 		@Override
-		public void sent(String message) {
+		public void messageSent(String message) {
 			result.addMessage(new XmppMessage(XmppMessage.Direction.SENT, message));
 		}
 
 		@Override
-		public void received(String message) {
+		public void messageReceived(String message) {
 			if (result.getLatency() == 0) {
 				result.latencyEnd();
 			}
@@ -173,7 +173,10 @@ public class InBandRegistrationSampler extends AbstractXmppSampler {
 		}
 
 		@Override
-		public void occurred(ConnectionException exception) {}
+		public void exceptionOccurred(ConnectionException exception) {}
+		
+		@Override
+		public void heartBeatsReceived(int length) {}
 
 		@Override
 		public void before(IStreamNegotiant source) {

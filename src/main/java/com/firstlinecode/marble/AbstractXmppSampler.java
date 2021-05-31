@@ -26,7 +26,7 @@ import com.firstlinecode.basalt.protocol.core.stanza.error.SubscriptionRequired;
 import com.firstlinecode.basalt.protocol.core.stanza.error.UndefinedCondition;
 import com.firstlinecode.basalt.protocol.core.stanza.error.UnexpectedRequest;
 import com.firstlinecode.basalt.protocol.core.stream.error.ResourceConstraint;
-import com.firstlinecode.chalk.IChatClient;
+import com.firstlinecode.chalk.core.IChatClient;
 
 public abstract class AbstractXmppSampler extends AbstractSampler {
 	private static final String STATUS_CODE_302 = "302";

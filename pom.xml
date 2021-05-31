@@ -4,7 +4,7 @@
 
 	<groupId>com.firstlinecode.marble</groupId>
 	<artifactId>marble</artifactId>
-	<version>0.1.0.RELEASE</version>
+	<version>0.1.0-RELEASE</version>
 	
 	<repositories>
 		<repository>
@@ -43,12 +43,12 @@
 		<dependency>
 			<groupId>com.firstlinecode.chalk.leps</groupId>
 			<artifactId>chalk-leps-im</artifactId>
-			<version>0.2.0.RELEASE</version>
+			<version>0.2.0-RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>com.firstlinecode.chalk.xeps</groupId>
 			<artifactId>chalk-xeps-ibr</artifactId>
-			<version>0.2.0.RELEASE</version>
+			<version>0.2.0-RELEASE</version>
 		</dependency>
 	</dependencies>
 	

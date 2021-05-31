@@ -18,10 +18,10 @@ import org.apache.log.Logger;
 import com.firstlinecode.basalt.protocol.core.JabberId;
 import com.firstlinecode.basalt.protocol.core.stanza.error.Forbidden;
 import com.firstlinecode.basalt.protocol.core.stanza.error.ServiceUnavailable;
-import com.firstlinecode.chalk.AuthFailureException;
-import com.firstlinecode.chalk.IChatClient;
-import com.firstlinecode.chalk.IPlugin;
-import com.firstlinecode.chalk.StandardChatClient;
+import com.firstlinecode.chalk.core.AuthFailureException;
+import com.firstlinecode.chalk.core.IChatClient;
+import com.firstlinecode.chalk.core.IPlugin;
+import com.firstlinecode.chalk.core.StandardChatClient;
 import com.firstlinecode.chalk.core.stream.INegotiationListener;
 import com.firstlinecode.chalk.core.stream.IStream;
 import com.firstlinecode.chalk.core.stream.IStreamNegotiant;
@@ -68,7 +68,7 @@ public class OpenStreamSampler extends AbstractXmppSampler {
 		samplerData.append("Port: ").append(streamConfig.getPort()).append('\n');
 		
 		OpenStreamListener openStreamListener = new OpenStreamListener(result);
-		chatClient.addConnectionListener(openStreamListener);
+		chatClient.getConnection().addListener(openStreamListener);
 		chatClient.addNegotiationListener(openStreamListener);
 		
 		result.sampleStart();
@@ -320,13 +320,13 @@ public class OpenStreamSampler extends AbstractXmppSampler {
 		}
 		
 		@Override
-		public void sent(String message) {
+		public void messageSent(String message) {
 			result.addMessage(new XmppMessage(XmppMessage.Direction.SENT, message));
 			result.setBodySize(result.getBodySize() + message.getBytes().length);
 		}
 
 		@Override
-		public void received(String message) {
+		public void messageReceived(String message) {
 			if (result.getLatency() == 0) {
 				result.latencyEnd();
 			}
@@ -336,7 +336,10 @@ public class OpenStreamSampler extends AbstractXmppSampler {
 		}
 
 		@Override
-		public void occurred(ConnectionException exception) {}
+		public void exceptionOccurred(ConnectionException exception) {}
+		
+		@Override
+		public void heartBeatsReceived(int length) {}
 
 		@Override
 		public void before(IStreamNegotiant source) {
